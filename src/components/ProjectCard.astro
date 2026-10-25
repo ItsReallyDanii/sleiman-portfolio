@@ -1,0 +1,34 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+	project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project-card">
+	<div class="project-card__topline">
+		<span class="project-number" aria-hidden="true">FILE / {project.number}</span>
+		<span class="status-chip">{project.status}</span>
+	</div>
+	<h3>{project.title}</h3>
+	<p class="project-summary">{project.summary}</p>
+	<div class="boundary-note">
+		<span aria-hidden="true">↳</span>
+		<p><strong>Boundary:</strong> {project.limitation}</p>
+	</div>
+	<ul class="tag-list" aria-label={`${project.title} technologies and themes`}>
+		{project.tags.map((tag) => <li>{tag}</li>)}
+	</ul>
+	<a
+		class="project-link"
+		href={project.href}
+		target="_blank"
+		rel="noopener noreferrer"
+		aria-label={`${project.title} repository on GitHub (opens in a new tab)`}
+	>
+		Review repository <span aria-hidden="true">↗</span>
+	</a>
+</article>
