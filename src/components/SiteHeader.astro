@@ -1,0 +1,29 @@
+---
+const links = [
+	['Home', '#home'],
+	['About', '#about'],
+	['Projects', '#projects'],
+	['Research', '#research'],
+	['Experience', '#experience'],
+	['Contact', '#contact'],
+];
+---
+
+<header class="site-header">
+	<div class="header-inner">
+		<a class="wordmark" href="#home" aria-label="sleiman.dev, back to top">
+			<span aria-hidden="true">&gt;_</span> sleiman.dev
+		</a>
+		<nav class="notebook-nav" aria-label="Primary navigation">
+			<ul>
+				{links.map(([label, href], index) => (
+					<li>
+						<a href={href}>
+							<span aria-hidden="true">{String(index + 1).padStart(2, '0')}.</span> {label}
+						</a>
+					</li>
+				))}
+			</ul>
+		</nav>
+	</div>
+</header>
